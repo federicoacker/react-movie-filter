@@ -7,16 +7,21 @@ import { movieArray } from "../../utils/data.js";
 import { useState } from "react";
 
 function Main() {
-    const [movieArray, setMovieArray] = useState(movieArray);
+    const [movieArrayState, setMovieArrayState] = useState(movieArray);
+    const [filteredMovieArray, setFilteredMovieArray] = useState(movieArrayState);
     return (
         <Container>
             <Row className="g-4 my-4">
                 <Col>
-                    <Inputs movieArray={ movieArray } setMovieArray={ setMovieArray } />
+                    <Inputs
+                        movieArrayState={movieArrayState}
+                        setMovieArrayState={setMovieArrayState}
+                        setFilteredMovieArray={setFilteredMovieArray}
+                    />
                 </Col>
             </Row>
             <Row className="g-4">
-                <MovieList movieArray={ movieArray }/>
+                <MovieList movieArray={filteredMovieArray} />
             </Row>
         </Container>
     )
