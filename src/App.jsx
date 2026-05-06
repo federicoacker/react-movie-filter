@@ -1,8 +1,11 @@
-import HelloClasse154 from "./components/HelloClasse154";
+import Header from "./components/header/Header.jsx";
+import Main from "./components/main/Main.jsx";
 
 function App() {
   return (
     <>
+    <Header></Header>
+    <Main></Main>
     </>
   );
 }
