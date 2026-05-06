@@ -14,3 +14,8 @@ body{
   background: var(--bs-dark);
   color:white;
 }
+
+.movie-image{
+  object-fit:contain;
+  background-color:black;
+}

@@ -1,63 +1,69 @@
-import { useState } from "react"
+import { useState } from "react";
+import { sanifyMovie } from "../../utils/functions.js";
+
+const templateMovie = {
+    id: null,
+    title: "",
+    genre: "Fantascienza",
+    image: null
+};
 
 function AddMovie({ movieArray, setMovieArray }) {
-    const [newMovie, setNewMovie] = useState(
-        {
-            id: null,
-            title: "",
-            genre: "Fantascienza",
-            image: null
-        }
-    )
+    const [newMovie, setNewMovie] = useState( templateMovie );
+    const [fileKey, setFileKey] = useState(0);
 
     const changeHandler = (event) => {
         const target = event.target;
         let value = target.value;
-        if(target.name === "image"){
+        if (target.name === "image") {
             value = URL.createObjectURL(target.files[0]);
         }
         setNewMovie(
             {
                 ...newMovie,
-                id: crypto.randomUUID,
-                [target.name]:value
+                id: crypto.randomUUID(),
+                [target.name]: value
             }
         )
     }
 
     const submitHandler = (event) => {
         event.preventDefault();
-        setMovieArray(
-            [
-                ...movieArray,
-                newMovie
-            ]
-        );
-        setNewMovie(
-            {
-                id: null,
-                title: "",
-                genre: "",
-                image: null
-            }
-        )
+        const [movieSuccess, movie] = sanifyMovie(newMovie);
+        setFileKey(crypto.randomUUID());
+
+        if (movieSuccess) {
+
+            setMovieArray(
+                [
+                    ...movieArray,
+                    movie
+                ]
+            );
+            setNewMovie(templateMovie)
+        }
+        else {
+            alert("Il titolo del film non è valido");
+            setNewMovie(templateMovie)
+        }
+
     }
 
     return (
         <form className="form-control d-flex flex-column my-4" data-bs-theme="dark" onSubmit={submitHandler}>
             <label className="form-label" htmlFor="add-title">Titolo del film da aggiungere</label>
-            <input className="form-control my-2" type="text" name="title" id="add-title" value={newMovie.title} onChange={changeHandler}/>
+            <input required className="form-control my-2" type="text" name="title" id="add-title" value={newMovie.title} onChange={changeHandler} />
             <label className="form-label" htmlFor="add-genre">Genere del film</label>
-            <select className="form-control my-2" name="genre" id="add-genre" value={newMovie.genre} onChange={changeHandler}>
+            <select required className="form-control my-2" name="genre" id="add-genre" value={newMovie.genre} onChange={changeHandler}>
                 <option value="Fantascienza">Fantascienza</option>
                 <option value="Thriller">Thriller</option>
                 <option value="Romantico">Romantico</option>
                 <option value="Azione">Azione</option>
             </select>
             <label className="form-label" htmlFor="add-image">Poster del film</label>
-            <input className="form-control my-2" type="file" name="image" id="add-image" onChange={changeHandler}></input>
+            <input required key={fileKey} className="form-control my-2" type="file" name="image" id="add-image" onChange={changeHandler}></input>
             <button className="btn btn-primary">Aggiungi film</button>
-            <img src={newMovie.image} alt={newMovie.title}/>
+            <img src={newMovie.image} />
         </form>
     )
 }
