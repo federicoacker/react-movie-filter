@@ -3,8 +3,9 @@ import { useState } from "react"
 function AddMovie({ movieArray, setMovieArray }) {
     const [newMovie, setNewMovie] = useState(
         {
-            title: null,
-            genre: null,
+            id: null,
+            title: "",
+            genre: "Fantascienza",
             image: null
         }
     )
@@ -18,13 +19,32 @@ function AddMovie({ movieArray, setMovieArray }) {
         setNewMovie(
             {
                 ...newMovie,
+                id: crypto.randomUUID,
                 [target.name]:value
             }
         )
     }
 
+    const submitHandler = (event) => {
+        event.preventDefault();
+        setMovieArray(
+            [
+                ...movieArray,
+                newMovie
+            ]
+        );
+        setNewMovie(
+            {
+                id: null,
+                title: "",
+                genre: "",
+                image: null
+            }
+        )
+    }
+
     return (
-        <form className="form-control d-flex flex-column my-4" data-bs-theme="dark">
+        <form className="form-control d-flex flex-column my-4" data-bs-theme="dark" onSubmit={submitHandler}>
             <label className="form-label" htmlFor="add-title">Titolo del film da aggiungere</label>
             <input className="form-control my-2" type="text" name="title" id="add-title" value={newMovie.title} onChange={changeHandler}/>
             <label className="form-label" htmlFor="add-genre">Genere del film</label>
