@@ -1,5 +1,5 @@
 
-import movieArray from "../../utils/data.js";
+import { movieArray } from "../../utils/data.js";
 import Movie from "./Movie.jsx";
 
 function MovieList() {
