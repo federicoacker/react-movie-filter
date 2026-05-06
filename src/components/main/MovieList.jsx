@@ -1,7 +1,16 @@
 
+import movieArray from "../../utils/data.js";
+import Movie from "./Movie.jsx";
+
 function MovieList() {
   return (
-    <div>MovieList</div>
+    movieArray.map(movie => 
+        <Movie 
+            key={ movie.id }
+            title={ movie.title } 
+            image={ movie.image } 
+            genre={ movie.genre }
+        />)
   )
 }
 
