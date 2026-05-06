@@ -31,7 +31,7 @@ function Inputs({movieArrayState, setMovieArrayState, setFilteredMovieArray}) {
         <form className="form-control d-flex justify-content-around w-auto" data-bs-theme="dark">
             <div>
                 <label className="form-label" htmlFor="search">Cerca un film per nome</label>
-                <input className="form-control" name="search" id="search" value={search.titleSearch} onChange={
+                <input className="form-control" type="text" name="search" id="search" value={search.titleSearch} onChange={
                     (event) => setSearch(
                         {
                             titleSearch:event.target.value,
