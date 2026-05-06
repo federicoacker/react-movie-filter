@@ -5,6 +5,7 @@ import Col from "react-bootstrap/Col";
 import Inputs from "./Inputs.jsx";
 import { movieArray } from "../../utils/data.js";
 import { useState } from "react";
+import AddMovie from "./AddMovie.jsx";
 
 function Main() {
     const [movieArrayState, setMovieArrayState] = useState(movieArray);
@@ -22,6 +23,11 @@ function Main() {
             </Row>
             <Row className="g-4">
                 <MovieList movieArray={filteredMovieArray} />
+            </Row>
+            <Row>
+                <Col>
+                    <AddMovie movieArray={movieArrayState} setMovieArray={setMovieArrayState}/>
+                </Col>
             </Row>
         </Container>
     )
