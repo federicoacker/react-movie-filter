@@ -1,9 +1,22 @@
 
-import { useState } from "react"
+import { useState } from "react";
+import { useEffect } from "react";
 
 function Inputs({movieArray, setMovieArray}) {
     const [search, setSearch] = useState("");
     const [genreSearch, setGenreSearch] = useState("");
+
+    useEffect(
+        () => {
+            
+            return () => {
+                setSearch("");
+                setGenreSearch("");
+            }
+        },
+        [search, genreSearch]
+    );
+
     return (
         <form className="form-control d-flex justify-content-around" data-bs-theme="dark">
             <div>
