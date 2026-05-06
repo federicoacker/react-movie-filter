@@ -2,14 +2,13 @@ function sanifyMovie(movieObject){
     let {title} = movieObject;
     const disallowedChars = [
         "\\", 
+        "/",
         "'", 
         '"', 
         "*", 
         "+", 
         "-", 
         ".", 
-        ":", 
-        ",", 
         ";", 
         "|", 
         "(", 

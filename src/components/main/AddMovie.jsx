@@ -52,16 +52,16 @@ function AddMovie({ movieArray, setMovieArray }) {
     return (
         <form className="form-control d-flex flex-column my-4" data-bs-theme="dark" onSubmit={submitHandler}>
             <label className="form-label" htmlFor="add-title">Titolo del film da aggiungere</label>
-            <input required className="form-control my-2" type="text" name="title" id="add-title" value={newMovie.title} onChange={changeHandler} />
+            <input required className="form-control mb-2" type="text" name="title" id="add-title" value={newMovie.title} onChange={changeHandler} />
             <label className="form-label" htmlFor="add-genre">Genere del film</label>
-            <select required className="form-control my-2" name="genre" id="add-genre" value={newMovie.genre} onChange={changeHandler}>
+            <select required className="form-control mb-2" name="genre" id="add-genre" value={newMovie.genre} onChange={changeHandler}>
                 <option value="Fantascienza">Fantascienza</option>
                 <option value="Thriller">Thriller</option>
                 <option value="Romantico">Romantico</option>
                 <option value="Azione">Azione</option>
             </select>
             <label className="form-label" htmlFor="add-image">Poster del film</label>
-            <input required key={fileKey} className="form-control my-2" type="file" name="image" id="add-image" onChange={changeHandler}></input>
+            <input required key={fileKey} className="form-control mb-2" type="file" name="image" id="add-image" onChange={changeHandler}></input>
             <button className="btn btn-primary">Aggiungi film</button>
             <img src={newMovie.image} />
         </form>

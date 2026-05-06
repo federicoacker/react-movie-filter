@@ -19,3 +19,8 @@ body{
   object-fit:contain;
   background-color:black;
 }
+
+.search-form-wrapper{
+  width: fit-content;
+  margin: 0 auto;
+}
