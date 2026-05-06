@@ -1,8 +1,8 @@
 
-import { movieArray } from "../../utils/data.js";
+
 import Movie from "./Movie.jsx";
 
-function MovieList() {
+function MovieList({movieArray}) {
   return (
     movieArray.map(movie => 
         <Movie 

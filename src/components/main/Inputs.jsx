@@ -1,7 +1,9 @@
+
 import { useState } from "react"
 
-function Inputs() {
+function Inputs({movieArray, setMovieArray}) {
     const [search, setSearch] = useState("");
+    const [genreSearch, setGenreSearch] = useState("");
     return (
         <form className="form-control d-flex justify-content-around" data-bs-theme="dark">
             <div>
@@ -10,14 +12,13 @@ function Inputs() {
             </div>
             <div>
                 <label htmlFor="genre-search">Cerca per Genere</label>
-                <select className="form-control" name="genre-search">
+                <select className="form-control" name="genre-search" value={genreSearch} onChange={(event)=> setGenreSearch(event.target.value)}>
                     <option value="Fantascienza">Fantascienza</option>
                     <option value="Thriller">Thriller</option>
                     <option value="Romantico">Romantico</option>
                     <option value="Azione">Azione</option>
                 </select>
             </div>
-            <button className="btn btn-primary w-25" type="Submit"> Cerca </button>
         </form>
     )
 }
