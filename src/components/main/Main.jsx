@@ -1,7 +1,11 @@
+import Container from "react-bootstrap/Container";
+import MovieList from "./MovieList.jsx";
 
 function Main() {
   return (
-    <div>Main</div>
+    <Container>
+        <MovieList/>
+    </Container>
   )
 }
 
