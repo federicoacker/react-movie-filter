@@ -11,7 +11,7 @@ function Inputs({ movieArrayState, setFilteredMovieArray }) {
             if (search.genreSearch !== "") {
                 setFilteredMovieArray(
                     movieArrayState.filter(
-                        movie => movie.genre.includes(search.genreSearch)
+                        movie => movie.genre === search.genreSearch
                     ));
             }
             else if (search.titleSearch !== "") {

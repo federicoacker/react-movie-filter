@@ -25,7 +25,7 @@ function sanifyMovie(movieObject){
         ">"
     ];
 
-    if(title.length <= 1){
+    if(title.trim().length <= 1){
         return [false, null];
     }
     else{
